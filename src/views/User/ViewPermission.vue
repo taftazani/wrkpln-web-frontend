@@ -1,0 +1,201 @@
+<script setup>
+import { FilterMatchMode } from 'primevue/api';
+import { ref, onMounted, onBeforeMount, reactive } from 'vue';
+import { PermissionService } from '@/service/user/PermissionService';
+import { useToast } from 'primevue/usetoast';
+import '@vuepic/vue-datepicker/dist/main.css';
+
+const toast = useToast();
+const users = ref([]);
+const deletePermissionDialog = ref(false);
+const user = ref({});
+const selectedPermissions = ref([]);
+const dt = ref(null);
+const filters = ref({});
+const loading = ref(false);
+const addModal = ref(false);
+const isEditing = ref(false);
+const isFileImage = ref(false);
+const forms = reactive({
+    id: null,
+    name: null
+});
+const permissionService = new PermissionService();
+
+onBeforeMount(() => {
+    initFilters();
+});
+
+onMounted(async () => {
+    loading.value = true;
+    try {
+        const data = await permissionService.getPermission();
+        users.value = data.data;
+    } catch (error) {
+        toast.add({ severity: 'error', summary: 'Error', detail: error.message, life: 3000 });
+    } finally {
+        loading.value = false;
+    }
+});
+
+const confirmDeletePermission = (editPermission) => {
+    user.value = editPermission;
+    deletePermissionDialog.value = true;
+};
+
+// Function to open the modal in Add mode
+const openAddModal = () => {
+    isEditing.value = false;
+    resetForm();
+    addModal.value = true;
+};
+
+// Function to open the modal in Edit mode
+const openEditModal = (user) => {
+    isEditing.value = true;
+    forms.id = user.id;
+    forms.name = user.name;
+    addModal.value = true;
+};
+
+const handleSubmit = async () => {
+    try {
+        const formData = new FormData();
+        formData.append('name', forms.name);
+
+        if (isEditing.value) {
+            formData.append('id', forms.id);
+            await permissionService.updatePermission(formData);
+            toast.add({ severity: 'success', summary: 'Success', detail: 'Permission updated successfully', life: 3000 });
+        } else {
+            await permissionService.createPermission(formData);
+            toast.add({ severity: 'success', summary: 'Success', detail: 'Permission added successfully', life: 3000 });
+        }
+        isFileImage.value = false;
+        addModal.value = false;
+        resetForm();
+        const data = await permissionService.getPermission();
+        users.value = data.data;
+    } catch (error) {
+        toast.add({ severity: 'error', summary: 'Error', detail: error.message, life: 3000 });
+    }
+};
+
+const resetForm = () => {
+    forms.id = null;
+    forms.name = null;
+};
+
+const deletePermission = async () => {
+    loading.value = true;
+    try {
+        await permissionService.deletePermission(user.value.id);
+        users.value = users.value.filter((val) => val.id !== user.value.id);
+        deletePermissionDialog.value = false;
+        user.value = {};
+        toast.add({ severity: 'success', summary: 'Successful', detail: 'Permission Deleted', life: 3000 });
+    } catch (error) {
+        toast.add({ severity: 'error', summary: 'Error', detail: error.message, life: 3000 });
+    } finally {
+        loading.value = false;
+    }
+};
+
+const exportCSV = () => {
+    dt.value.exportCSV();
+};
+
+const initFilters = () => {
+    filters.value = {
+        global: { value: null, matchMode: FilterMatchMode.CONTAINS }
+    };
+};
+</script>
+
+<template>
+    <div class="grid">
+        <div class="col-12">
+            <div class="card">
+                <Toolbar class="mb-4">
+                    <template v-slot:start>
+                        <div class="my-2">
+                            <Button label="New" icon="pi pi-plus" class="mr-2" severity="success" @click="openAddModal" />
+                        </div>
+                    </template>
+                    <template v-slot:end>
+                        <Button label="Export" icon="pi pi-upload" severity="help" @click="exportCSV($event)" />
+                    </template>
+                </Toolbar>
+                <DataTable
+                    ref="dt"
+                    :value="users"
+                    v-model:selection="selectedPermissions"
+                    dataKey="id"
+                    :paginator="true"
+                    :rows="10"
+                    :filters="filters"
+                    paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
+                    :rowsPerPageOptions="[5, 10, 25]"
+                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} users"
+                >
+                    <Column field="name" header="Nama Permission" :sortable="false">
+                        <template #body="slotProps">
+                            <span class="p-column-title">Nama Permission</span>
+                            {{ slotProps.data.name }}
+                        </template>
+                    </Column>
+
+                    <Column headerStyle="min-width:10rem;">
+                        <template #body="slotProps">
+                            <Button icon="pi pi-pencil" class="mr-2" severity="success" rounded @click="openEditModal(slotProps.data)" />
+                            <Button icon="pi pi-trash" class="mt-2" severity="warning" rounded @click="confirmDeletePermission(slotProps.data)" />
+                        </template>
+                    </Column>
+                </DataTable>
+
+                <Dialog v-model:visible="deletePermissionDialog" :breakpoints="{ '960px': '75vw' }" style="width: 30vw" header="Confirm" :modal="true">
+                    <div class="flex align-items-center justify-content-center">
+                        <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem" />
+                        <span v-if="user"
+                            >Are you sure you want to delete <b>{{ user.name }}</b
+                            >?</span
+                        >
+                    </div>
+                    <template #footer>
+                        <Button label="No" icon="pi pi-times" text @click="deletePermissionDialog = false" />
+                        <Button label="Yes" icon="pi pi-check" text @click="deletePermission" />
+                    </template>
+                </Dialog>
+                <Dialog v-model:visible="addModal" :modal="true" :header="isEditing ? 'Edit Permission' : 'Add Permission'" :style="{ width: '50vw' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
+                    <div class="formgrid grid p-fluid">
+                        <div class="col-12 md:col-6">
+                            <div class="field">
+                                <label for="formname">Nama Permission</label>
+                                <InputText id="formname" v-model="forms.name" />
+                            </div>
+                        </div>
+
+                        <div class="col-12 md:col-12">
+                            <div class="field">
+                                <Button label="Submit" type="submit" @click.prevent="handleSubmit" />
+                            </div>
+                        </div>
+                    </div>
+                </Dialog>
+
+                <div v-if="loading" class="loading-spinner">
+                    <ProgressSpinner />
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<style scoped>
+.loading-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+</style>

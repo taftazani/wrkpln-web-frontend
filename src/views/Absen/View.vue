@@ -18,7 +18,7 @@ const loading = ref(false);
 const addModal = ref(false);
 const isEditing = ref(false);
 const absenService = new AbsenService();
-const bUrl = 'https://backend.coffeelabs.id';
+const bUrl = 'https://workplan-web.test';
 
 const formatDate = (date) => {
     const currentDate = new Date(date);

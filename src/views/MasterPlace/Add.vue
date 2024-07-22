@@ -13,7 +13,7 @@ const router = useRouter();
 
 const placeService = new PlaceService();
 const map = ref(null);
-const greenIcon = new L.icon({ iconUrl: '/layout/images/logo-dark.svg' });
+const greenIcon = new L.icon({ iconUrl: '/layout/images/logo.png' });
 const form = reactive({
     name: '',
     radius: '',

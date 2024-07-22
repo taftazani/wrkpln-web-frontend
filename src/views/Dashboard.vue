@@ -11,7 +11,7 @@ const totalAdvances = ref(0);
 const upcomingBirthdays = ref([]);
 const toast = useToast();
 
-const bUrl = 'https://backend.coffeelabs.id/';
+const bUrl = 'https://workplan-web.test/';
 const formatCurrency = (value) => {
     return new Intl.NumberFormat('id-ID', {
         style: 'currency',

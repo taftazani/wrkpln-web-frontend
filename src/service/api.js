@@ -2,8 +2,8 @@ import axios from 'axios';
 
 // Create an Axios instance with default configurations
 const apiClient = axios.create({
-    baseURL: 'https://backend.coffeelabs.id/api', // Default to localhost if not set
-    // baseURL: 'https://backend.coffeelabs.id/api', // Default to localhost if not set
+    baseURL: 'https://workplan-web.test/api', // Default to localhost if not set
+    // baseURL: 'https://workplan-web.test/api', // Default to localhost if not set
     // baseURL: 'http://192.168.1.18:8000/api', // Default to localhost if not set
 
     headers: {

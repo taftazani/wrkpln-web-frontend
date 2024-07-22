@@ -20,28 +20,244 @@ const model = ref([
         label: 'Master Menu',
         items: [
             {
-                label: 'Tempat Kerja',
-                icon: 'pi pi-map-marker',
-                to: '/app/master/place',
-                permission: 'manage_tempat_kerja' // Add permission key
+                label: 'Workplan Core',
+                icon: 'pi pi-fw pi-bookmark',
+                items: [
+                    {
+                        label: 'Organization',
+                        icon: 'pi pi-map-marker',
+                        to: '/app/master/place',
+                        permission: 'manage_tempat_kerja' // Add permission key
+                    },
+                    {
+                        label: 'Function',
+                        icon: 'pi pi-clock',
+                        to: '/app/master/shift',
+                        permission: 'manage_shift' // Add permission key
+                    },
+                    {
+                        label: 'Level Structure',
+                        icon: 'pi pi-calendar',
+                        to: '/app/master/schedule',
+                        permission: 'manage_jadwal' // Add permission key
+                    },
+                    {
+                        label: 'Structure',
+                        icon: 'pi pi-calendar',
+                        to: '/app/master/todolist',
+                        permission: 'todo_list' // Add permission key
+                    },
+                    {
+                        label: 'General',
+                        icon: 'pi pi-user',
+                        to: '/app/master/user',
+                        permission: 'manage_user_management' // Add permission key
+                    },
+                    {
+                        label: 'Holidays',
+                        icon: 'pi pi-map-marker',
+                        to: '/app/master/user/area',
+                        permission: 'manage_user_management' // Add permission key
+                    },
+                    {
+                        label: 'Employee Type',
+                        icon: 'pi pi-user-edit',
+                        to: '/app/role',
+                        permission: 'manage_role_management' // Add permission key
+                    },
+                    {
+                        label: 'Package Type',
+                        icon: 'pi pi-bell',
+                        to: '/app/master/notification',
+                        permission: 'manage_user_management' // Add permission key
+                    },
+                    {
+                        label: 'Package Mapping',
+                        icon: 'pi pi-lock',
+                        to: '/app/permission',
+                        permission: 'manage_role_management' // Add permission key
+                    },
+                    {
+                        label: 'Gender',
+                        icon: 'pi pi-lock',
+                        to: '/app/permission',
+                        permission: 'manage_role_management' // Add permission key
+                    },
+                    {
+                        label: 'Married Status',
+                        icon: 'pi pi-lock',
+                        to: '/app/permission',
+                        permission: 'manage_role_management' // Add permission key
+                    },
+                    {
+                        label: 'Religion',
+                        icon: 'pi pi-lock',
+                        to: '/app/permission',
+                        permission: 'manage_role_management' // Add permission key
+                    },
+                    {
+                        label: 'Citizen',
+                        icon: 'pi pi-lock',
+                        to: '/app/permission',
+                        permission: 'manage_role_management' // Add permission key
+                    },
+                    {
+                        label: 'Company Registration',
+                        icon: 'pi pi-lock',
+                        to: '/app/permission',
+                        permission: 'manage_role_management' // Add permission key
+                    }
+                ]
             },
             {
-                label: 'Shift',
-                icon: 'pi pi-clock',
-                to: '/app/master/shift',
-                permission: 'manage_shift' // Add permission key
+                label: 'Management',
+                icon: 'pi pi-fw pi-bookmark',
+                items: [
+                    {
+                        label: 'Tempat Kerja',
+                        icon: 'pi pi-map-marker',
+                        to: '/app/master/place',
+                        permission: 'manage_tempat_kerja' // Add permission key
+                    },
+                    {
+                        label: 'Shift',
+                        icon: 'pi pi-clock',
+                        to: '/app/master/shift',
+                        permission: 'manage_shift' // Add permission key
+                    },
+                    {
+                        label: 'Jadwal',
+                        icon: 'pi pi-calendar',
+                        to: '/app/master/schedule',
+                        permission: 'manage_jadwal' // Add permission key
+                    },
+                    {
+                        label: 'Todo List',
+                        icon: 'pi pi-calendar',
+                        to: '/app/master/todolist',
+                        permission: 'todo_list' // Add permission key
+                    },
+                    {
+                        label: 'User Management',
+                        icon: 'pi pi-user',
+                        to: '/app/master/user',
+                        permission: 'manage_user_management' // Add permission key
+                    },
+                    {
+                        label: 'User Area Management',
+                        icon: 'pi pi-map-marker',
+                        to: '/app/master/user/area',
+                        permission: 'manage_user_management' // Add permission key
+                    },
+                    {
+                        label: 'Role Management',
+                        icon: 'pi pi-user-edit',
+                        to: '/app/role',
+                        permission: 'manage_role_management' // Add permission key
+                    },
+                    {
+                        label: 'Notification',
+                        icon: 'pi pi-bell',
+                        to: '/app/master/notification',
+                        permission: 'manage_user_management' // Add permission key
+                    },
+                    {
+                        label: 'Permission Management',
+                        icon: 'pi pi-lock',
+                        to: '/app/permission',
+                        permission: 'manage_role_management' // Add permission key
+                    }
+                ]
             },
             {
-                label: 'Jadwal',
-                icon: 'pi pi-calendar',
-                to: '/app/master/schedule',
-                permission: 'manage_jadwal' // Add permission key
-            },
-            {
-                label: 'Todo List',
-                icon: 'pi pi-calendar',
-                to: '/app/master/todolist',
-                permission: 'todo_list' // Add permission key
+                label: 'Task',
+                icon: 'pi pi-fw pi-bookmark',
+                items: [
+                    {
+                        label: 'Organization',
+                        icon: 'pi pi-map-marker',
+                        to: '/app/master/place',
+                        permission: 'manage_tempat_kerja' // Add permission key
+                    },
+                    {
+                        label: 'Function',
+                        icon: 'pi pi-clock',
+                        to: '/app/master/shift',
+                        permission: 'manage_shift' // Add permission key
+                    },
+                    {
+                        label: 'Level Structure',
+                        icon: 'pi pi-calendar',
+                        to: '/app/master/schedule',
+                        permission: 'manage_jadwal' // Add permission key
+                    },
+                    {
+                        label: 'Structure',
+                        icon: 'pi pi-calendar',
+                        to: '/app/master/todolist',
+                        permission: 'todo_list' // Add permission key
+                    },
+                    {
+                        label: 'General',
+                        icon: 'pi pi-user',
+                        to: '/app/master/user',
+                        permission: 'manage_user_management' // Add permission key
+                    },
+                    {
+                        label: 'Holidays',
+                        icon: 'pi pi-map-marker',
+                        to: '/app/master/user/area',
+                        permission: 'manage_user_management' // Add permission key
+                    },
+                    {
+                        label: 'Employee Type',
+                        icon: 'pi pi-user-edit',
+                        to: '/app/role',
+                        permission: 'manage_role_management' // Add permission key
+                    },
+                    {
+                        label: 'Package Type',
+                        icon: 'pi pi-bell',
+                        to: '/app/master/notification',
+                        permission: 'manage_user_management' // Add permission key
+                    },
+                    {
+                        label: 'Package Mapping',
+                        icon: 'pi pi-lock',
+                        to: '/app/permission',
+                        permission: 'manage_role_management' // Add permission key
+                    },
+                    {
+                        label: 'Gender',
+                        icon: 'pi pi-lock',
+                        to: '/app/permission',
+                        permission: 'manage_role_management' // Add permission key
+                    },
+                    {
+                        label: 'Married Status',
+                        icon: 'pi pi-lock',
+                        to: '/app/permission',
+                        permission: 'manage_role_management' // Add permission key
+                    },
+                    {
+                        label: 'Religion',
+                        icon: 'pi pi-lock',
+                        to: '/app/permission',
+                        permission: 'manage_role_management' // Add permission key
+                    },
+                    {
+                        label: 'Citizen',
+                        icon: 'pi pi-lock',
+                        to: '/app/permission',
+                        permission: 'manage_role_management' // Add permission key
+                    },
+                    {
+                        label: 'Company Registration',
+                        icon: 'pi pi-lock',
+                        to: '/app/permission',
+                        permission: 'manage_role_management' // Add permission key
+                    }
+                ]
             }
         ]
     },
@@ -121,52 +337,26 @@ const model = ref([
         label: 'Pages',
         icon: 'pi pi-briefcase',
         to: '/pages',
-        items: [
-            {
-                label: 'User Management',
-                icon: 'pi pi-user',
-                to: '/app/master/user',
-                permission: 'manage_user_management' // Add permission key
-            },
-            {
-                label: 'User Area Management',
-                icon: 'pi pi-map-marker',
-                to: '/app/master/user/area',
-                permission: 'manage_user_management' // Add permission key
-            },
-            {
-                label: 'Role Management',
-                icon: 'pi pi-user-edit',
-                to: '/app/role',
-                permission: 'manage_role_management' // Add permission key
-            },
-            {
-                label: 'Notification',
-                icon: 'pi pi-bell',
-                to: '/app/master/notification',
-                permission: 'manage_user_management' // Add permission key
-            },
-            {
-                label: 'Permission Management',
-                icon: 'pi pi-lock',
-                to: '/app/permission',
-                permission: 'manage_role_management' // Add permission key
-            }
-        ]
+        items: []
     }
 ]);
 const filterMenuItems = (item) => {
-    return {
-        ...item,
-        items: item.items.filter((subItem) => hasPermission(subItem.permission))
-    };
+    if (item.items) {
+        return {
+            ...item,
+            items: item.items.map((subItem) => filterMenuItems(subItem)).filter((subItem) => !subItem.permission || hasPermission(subItem.permission))
+        };
+    }
+    return item;
 };
+
+const filteredModel = ref(model.value.map(filterMenuItems).filter((item) => item.items.length > 0 || !item.items));
 </script>
 
 <template v-focustrap :autofocus="false">
     <ul :autofocus="false" class="layout-menu">
-        <template :autofocus="false" v-for="(item, i) in model" :key="i">
-            <app-menu-item :autofocus="false" v-if="!item.separator && item.items.some((subItem) => hasPermission(subItem.permission))" :item="filterMenuItems(item)" :index="i"></app-menu-item>
+        <template :autofocus="false" v-for="(item, i) in filteredModel" :key="i">
+            <app-menu-item :autofocus="false" v-if="!item.separator && (item.items.length || !item.items)" :item="item" :index="i"></app-menu-item>
             <li v-if="item.separator" class="menu-separator"></li>
         </template>
     </ul>

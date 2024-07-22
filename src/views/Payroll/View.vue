@@ -292,7 +292,7 @@ const vFocus = {
                                 <div v-for="item in payrolls" :key="item.id" class="col-12">
                                     <div class="flex flex-column sm:flex-row sm:align-items-center p-4 gap-3">
                                         <div class="md:w-10rem relative">
-                                            <img class="block xl:block mx-auto border-round w-full" :src="`https://backend.coffeelabs.id/${item.user.profile_image}`" :alt="item.user.name" />
+                                            <img class="block xl:block mx-auto border-round w-full" :src="`https://workplan-web.test/${item.user.profile_image}`" :alt="item.user.name" />
                                         </div>
                                         <div class="flex flex-column md:flex-row justify-content-between md:align-items-center flex-1 gap-4">
                                             <div class="flex flex-row md:flex-column justify-content-between align-items-start gap-2">

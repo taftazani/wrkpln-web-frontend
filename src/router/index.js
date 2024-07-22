@@ -1,5 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { isAuthenticated, hasPermission } from '@/service/authService';
+import { isAuthenticated, hasPermission, isOtpVerified } from '@/service/authService';
+import Register from '@/views/pages/auth/Register.vue';
+import Step1 from '@/views/pages/auth/steps/Step1.vue';
+import Step2 from '@/views/pages/auth/steps/Step2.vue';
+import Step3 from '@/views/pages/auth/steps/Step3.vue';
+import Step4 from '@/views/pages/auth/steps/Step4.vue';
 
 import PublicLayout from '@/layout/PublicLayout.vue';
 import PrivateLayout from '@/layout/PrivateLayout.vue';
@@ -12,8 +17,17 @@ const router = createRouter({
         {
             path: '/',
             component: PublicLayout,
-            children: [{ path: '/', component: () => import('@/views/pages/auth/Login.vue') }],
+            children: [
+                { path: '', component: () => import('@/views/pages/auth/Login.vue') },
+                { path: 'register-company', component: () => import('@/views/pages/auth/Register.vue') }
+            ],
             meta: { requiresGuest: true } // Only accessible by guests (not logged in)
+        },
+        {
+            path: '/otp',
+            component: PublicLayout,
+            children: [{ path: '', component: () => import('@/views/pages/auth/Otp.vue') }],
+            meta: { requiresAuth: true } // Only accessible after login but before OTP verification
         },
         {
             path: '/app',
@@ -117,26 +131,37 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     const isAuthenticatedUser = isAuthenticated();
+    const isOtpVerifiedUser = isOtpVerified();
 
+    // Check if the route requires authentication
     if (to.matched.some((record) => record.meta.requiresAuth)) {
         if (!isAuthenticatedUser) {
-            next({ path: '/' });
+            // If not authenticated, redirect to the login page
+            return next({ path: '/' });
+        } else if (!isOtpVerifiedUser && to.path !== '/otp') {
+            // If authenticated but OTP not verified, redirect to the OTP page
+            return next({ path: '/otp' });
         } else {
             const requiredPermission = to.meta.permission;
             if (requiredPermission && !hasPermission(requiredPermission)) {
-                next({ path: '/app/dashboard' }); // Redirect to a safe page if permission is not granted
+                // If permission is required but not granted, redirect to a safe page
+                return next({ path: '/app/dashboard' });
             } else {
-                next();
+                // If authenticated and permission is granted, proceed to the route
+                return next();
             }
         }
     } else if (to.matched.some((record) => record.meta.requiresGuest)) {
         if (isAuthenticatedUser) {
-            next({ path: '/app/dashboard' });
+            // If the user is authenticated, redirect to the dashboard
+            return next({ path: '/app/dashboard' });
         } else {
-            next();
+            // If not authenticated, proceed to the guest route
+            return next();
         }
     } else {
-        next();
+        // If no authentication or guest requirements, proceed to the route
+        return next();
     }
 });
 

@@ -15,7 +15,7 @@ export default defineConfig(() => {
             port: 5173,
             proxy: {
                 '/api': {
-                    target: 'https://backend.coffeelabs.id', // Laravel backend URL
+                    target: 'https://workplan-web.test', // Laravel backend URL
                     changeOrigin: true,
                     secure: true,
                     rewrite: (path) => path.replace(/^\/api/, '')

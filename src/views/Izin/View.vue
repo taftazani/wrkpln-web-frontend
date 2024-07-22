@@ -17,7 +17,7 @@ const filters = ref({});
 const loading = ref(false);
 const addModal = ref(false);
 const isEditing = ref(false);
-const bUrl = 'https://backend.coffeelabs.id';
+const bUrl = 'https://workplan-web.test';
 
 const form = reactive({
     id: null,

@@ -6,7 +6,7 @@ import { useToast } from 'primevue/usetoast';
 
 const toast = new useToast();
 const addTodo = ref(false);
-const bUrl = 'https://backend.coffeelabs.id';
+const bUrl = 'https://workplan-web.test';
 
 const formatDate = (date) => {
     const d = new Date(date);

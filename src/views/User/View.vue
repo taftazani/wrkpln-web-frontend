@@ -200,7 +200,7 @@ const initFilters = () => {
                 >
                     <Column header="Image">
                         <template #body="slotProps">
-                            <Image preview :src="`https://backend.coffeelabs.id/${slotProps.data.profile_image}`" :alt="slotProps.data.image" width="90" class="border-round" />
+                            <Image preview :src="`https://workplan-web.test/${slotProps.data.profile_image}`" :alt="slotProps.data.image" width="90" class="border-round" />
                         </template>
                     </Column>
                     <Column field="name" header="Nama User" :sortable="false">

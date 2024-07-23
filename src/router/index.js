@@ -123,6 +123,62 @@ const router = createRouter({
                 {
                     path: 'page/maintenance',
                     component: () => import('@/views/Maintenance.vue')
+                },
+                {
+                    path: 'master/organization',
+                    component: () => import('@/views/Core/Organization/View.vue')
+                },
+                {
+                    path: 'master/function',
+                    component: () => import('@/views/Core/Function/View.vue')
+                },
+                {
+                    path: 'master/levelStructure',
+                    component: () => import('@/views/Core/LevelStructure/View.vue')
+                },
+                {
+                    path: 'master/structure',
+                    component: () => import('@/views/Core/Structure/View.vue')
+                },
+                {
+                    path: 'master/general',
+                    component: () => import('@/views/Core/General/View.vue')
+                },
+                {
+                    path: 'master/holidays',
+                    component: () => import('@/views/Core/Holiday/View.vue')
+                },
+                {
+                    path: 'master/employee-types',
+                    component: () => import('@/views/Core/EmployeeType/View.vue')
+                },
+                {
+                    path: 'master/package-types',
+                    component: () => import('@/views/Core/PackageType/View.vue')
+                },
+                {
+                    path: 'master/menu-mapping',
+                    component: () => import('@/views/Core/MenuMapping/View.vue')
+                },
+                {
+                    path: 'master/gender',
+                    component: () => import('@/views/Core/Gender/View.vue')
+                },
+                {
+                    path: 'master/married-status',
+                    component: () => import('@/views/Core/MarriedStatus/View.vue')
+                },
+                {
+                    path: 'master/religion',
+                    component: () => import('@/views/Core/Religion/View.vue')
+                },
+                {
+                    path: 'master/citizen',
+                    component: () => import('@/views/Core/Citizen/View.vue')
+                },
+                {
+                    path: 'task/jenis-aktifitas',
+                    component: () => import('@/views/Task/JenisAktifitas/View.vue')
                 }
             ]
         }

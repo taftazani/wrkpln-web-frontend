@@ -26,79 +26,81 @@ const model = ref([
                     {
                         label: 'Organization',
                         icon: 'pi pi-map-marker',
-                        to: '/app/master/place',
-                        permission: 'manage_tempat_kerja' // Add permission key
+                        to: '/app/master/organization',
+                        // permission: 'manage_organization' // Add permission key
+                        permission: 'manage_jadwal' // Add permission key
                     },
                     {
                         label: 'Function',
                         icon: 'pi pi-clock',
-                        to: '/app/master/shift',
-                        permission: 'manage_shift' // Add permission key
+                        to: '/app/master/function',
+                        // permission: 'manage_function' // Add permission key
+                        permission: 'manage_jadwal' // Add permission key
                     },
                     {
                         label: 'Level Structure',
                         icon: 'pi pi-calendar',
-                        to: '/app/master/schedule',
+                        to: '/app/master/levelStructure',
                         permission: 'manage_jadwal' // Add permission key
                     },
                     {
-                        label: 'Structure',
+                        label: 'Structure (On Maintenance)',
                         icon: 'pi pi-calendar',
-                        to: '/app/master/todolist',
-                        permission: 'todo_list' // Add permission key
+                        to: '/app/master/structure',
+                        permission: 'manage_jadwal' // Add permission key
                     },
                     {
                         label: 'General',
                         icon: 'pi pi-user',
-                        to: '/app/master/user',
+                        to: '/app/master/general',
                         permission: 'manage_user_management' // Add permission key
                     },
                     {
                         label: 'Holidays',
                         icon: 'pi pi-map-marker',
-                        to: '/app/master/user/area',
+                        to: '/app/master/holidays',
                         permission: 'manage_user_management' // Add permission key
                     },
                     {
                         label: 'Employee Type',
                         icon: 'pi pi-user-edit',
-                        to: '/app/role',
+                        to: '/app/master/employee-types',
                         permission: 'manage_role_management' // Add permission key
                     },
                     {
                         label: 'Package Type',
                         icon: 'pi pi-bell',
-                        to: '/app/master/notification',
+                        to: '/app/master/package-types',
                         permission: 'manage_user_management' // Add permission key
                     },
                     {
-                        label: 'Package Mapping',
+                        label: 'Menu Mapping',
                         icon: 'pi pi-lock',
-                        to: '/app/permission',
+                        to: '/app/master/menu-mapping',
                         permission: 'manage_role_management' // Add permission key
                     },
                     {
                         label: 'Gender',
                         icon: 'pi pi-lock',
-                        to: '/app/permission',
+                        to: '/app/master/gender',
                         permission: 'manage_role_management' // Add permission key
                     },
                     {
                         label: 'Married Status',
                         icon: 'pi pi-lock',
-                        to: '/app/permission',
+                        to: '/app/master/married-status',
                         permission: 'manage_role_management' // Add permission key
                     },
                     {
                         label: 'Religion',
                         icon: 'pi pi-lock',
-                        to: '/app/permission',
+                        to: '/app/master/religion',
                         permission: 'manage_role_management' // Add permission key
                     },
                     {
                         label: 'Citizen',
                         icon: 'pi pi-lock',
-                        to: '/app/permission',
+                        to: '/app/master/citizen',
                         permission: 'manage_role_management' // Add permission key
                     },
                     {
@@ -156,7 +158,7 @@ const model = ref([
                         permission: 'manage_role_management' // Add permission key
                     },
                     {
-                        label: 'Notification',
+                        label: 'Kirim Pesan',
                         icon: 'pi pi-bell',
                         to: '/app/master/notification',
                         permission: 'manage_user_management' // Add permission key
@@ -174,85 +176,73 @@ const model = ref([
                 icon: 'pi pi-fw pi-bookmark',
                 items: [
                     {
-                        label: 'Organization',
+                        label: 'Jenis Aktifitas',
                         icon: 'pi pi-map-marker',
-                        to: '/app/master/place',
+                        to: '/app/task/jenis-aktifitas',
                         permission: 'manage_tempat_kerja' // Add permission key
                     },
                     {
-                        label: 'Function',
+                        label: 'Kategori Produk',
                         icon: 'pi pi-clock',
                         to: '/app/master/shift',
                         permission: 'manage_shift' // Add permission key
                     },
                     {
-                        label: 'Level Structure',
+                        label: 'Jenis Produk',
                         icon: 'pi pi-calendar',
                         to: '/app/master/schedule',
                         permission: 'manage_jadwal' // Add permission key
                     },
                     {
-                        label: 'Structure',
+                        label: 'Jenis Usaha',
                         icon: 'pi pi-calendar',
                         to: '/app/master/todolist',
                         permission: 'todo_list' // Add permission key
                     },
                     {
-                        label: 'General',
+                        label: 'Progress Status',
                         icon: 'pi pi-user',
                         to: '/app/master/user',
                         permission: 'manage_user_management' // Add permission key
                     },
                     {
-                        label: 'Holidays',
+                        label: 'Jenis Dokumen',
                         icon: 'pi pi-map-marker',
                         to: '/app/master/user/area',
                         permission: 'manage_user_management' // Add permission key
                     },
                     {
-                        label: 'Employee Type',
+                        label: 'Mapping Jenis Akt - Kategpri Prd - Jns Prd - Dok',
                         icon: 'pi pi-user-edit',
                         to: '/app/role',
                         permission: 'manage_role_management' // Add permission key
                     },
                     {
-                        label: 'Package Type',
+                        label: 'Tujuan Kunjungan',
                         icon: 'pi pi-bell',
                         to: '/app/master/notification',
                         permission: 'manage_user_management' // Add permission key
                     },
                     {
-                        label: 'Package Mapping',
+                        label: 'Hasil Kunjungan',
                         icon: 'pi pi-lock',
                         to: '/app/permission',
                         permission: 'manage_role_management' // Add permission key
                     },
                     {
-                        label: 'Gender',
+                        label: 'Alasan Tolak',
                         icon: 'pi pi-lock',
                         to: '/app/permission',
                         permission: 'manage_role_management' // Add permission key
                     },
                     {
-                        label: 'Married Status',
+                        label: 'Nama UDF',
                         icon: 'pi pi-lock',
                         to: '/app/permission',
                         permission: 'manage_role_management' // Add permission key
                     },
                     {
-                        label: 'Religion',
-                        icon: 'pi pi-lock',
-                        to: '/app/permission',
-                        permission: 'manage_role_management' // Add permission key
-                    },
-                    {
-                        label: 'Citizen',
-                        icon: 'pi pi-lock',
-                        to: '/app/permission',
-                        permission: 'manage_role_management' // Add permission key
-                    },
-                    {
-                        label: 'Company Registration',
+                        label: 'UDF DDL',
                         icon: 'pi pi-lock',
                         to: '/app/permission',
                         permission: 'manage_role_management' // Add permission key
@@ -261,37 +251,37 @@ const model = ref([
             }
         ]
     },
-    {
-        label: 'Management',
-        items: [
-            {
-                label: 'Izin',
-                icon: 'pi pi-exclamation-triangle',
-                to: '/app/izin',
-                badge: 'NEW',
-                permission: 'manage_izin' // Add permission key
-            },
-            {
-                label: 'Absensi',
-                icon: 'pi pi-th-large',
-                to: '/app/absensi',
-                permission: 'manage_absensi' // Add permission key
-            },
-            {
-                label: 'Change Schedule Request (Maintenance)',
-                icon: 'pi pi-cog',
-                to: '/app/page/maintenance',
-                permission: 'manage_page_settings' // Add permission key
-            }
-            // {
-            //     label: 'Lembur',
-            //     icon: 'pi pi-bolt',
-            //     url: 'https://www.primefaces.org/primeblocks-vue',
-            //     target: '_blank',
-            //     permission: 'manage_lembur' // Add permission key
-            // }
-        ]
-    },
+    // {
+    //     label: 'Management',
+    //     items: [
+    //         {
+    //             label: 'Izin',
+    //             icon: 'pi pi-exclamation-triangle',
+    //             to: '/app/izin',
+    //             badge: 'NEW',
+    //             permission: 'manage_izin' // Add permission key
+    //         },
+    //         {
+    //             label: 'Absensi',
+    //             icon: 'pi pi-th-large',
+    //             to: '/app/absensi',
+    //             permission: 'manage_absensi' // Add permission key
+    //         }
+    //         // {
+    //         //     label: 'Change Schedule Request (Maintenance)',
+    //         //     icon: 'pi pi-cog',
+    //         //     to: '/app/page/maintenance',
+    //         //     permission: 'manage_page_settings' // Add permission key
+    //         // }
+    //         // {
+    //         //     label: 'Lembur',
+    //         //     icon: 'pi pi-bolt',
+    //         //     url: 'https://www.primefaces.org/primeblocks-vue',
+    //         //     target: '_blank',
+    //         //     permission: 'manage_lembur' // Add permission key
+    //         // }
+    //     ]
+    // },
     {
         label: 'Report',
         items: [
@@ -309,30 +299,30 @@ const model = ref([
             }
         ]
     },
-    {
-        label: 'Payroll',
-        items: [
-            {
-                label: 'List Payment',
-                icon: 'pi pi-file',
-                to: '/app/payment',
-                permission: 'manage_payroll' // Add permission key
-            },
-            {
-                label: 'Payroll',
-                icon: 'pi pi-money-bill',
-                to: '/app/payroll',
-                permission: 'manage_payroll' // Add permission key
-            },
+    // {
+    //     label: 'Payroll',
+    //     items: [
+    //         {
+    //             label: 'List Payment',
+    //             icon: 'pi pi-file',
+    //             to: '/app/payment',
+    //             permission: 'manage_payroll' // Add permission key
+    //         },
+    //         {
+    //             label: 'Payroll',
+    //             icon: 'pi pi-money-bill',
+    //             to: '/app/payroll',
+    //             permission: 'manage_payroll' // Add permission key
+    //         },
 
-            {
-                label: 'Advance',
-                icon: 'pi pi-calculator',
-                to: '/app/advance',
-                permission: 'manage_advance' // Add permission key
-            }
-        ]
-    },
+    //         {
+    //             label: 'Advance',
+    //             icon: 'pi pi-calculator',
+    //             to: '/app/advance',
+    //             permission: 'manage_advance' // Add permission key
+    //         }
+    //     ]
+    // },
     {
         label: 'Pages',
         icon: 'pi pi-briefcase',
